@@ -1,0 +1,22 @@
+{
+  "name": "blockchain-eth-trading-dapp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "truffle-config.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ThomFDV/Blockchain-ETH-Trading-Dapp.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ThomFDV/Blockchain-ETH-Trading-Dapp/issues"
+  },
+  "homepage": "https://github.com/ThomFDV/Blockchain-ETH-Trading-Dapp#readme"
+}
