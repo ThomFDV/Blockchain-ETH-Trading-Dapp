@@ -9,11 +9,13 @@ import { HomeComponent } from './components/home/home.component';
 import {MatIconModule} from "@angular/material/icon";
 import {MatCardModule} from "@angular/material/card";
 import {MatButtonModule} from "@angular/material/button";
+import { SellingFormComponent } from './components/selling-form/selling-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    SellingFormComponent
   ],
   imports: [
     BrowserModule,
