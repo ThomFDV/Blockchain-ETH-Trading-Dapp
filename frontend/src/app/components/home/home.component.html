@@ -2,32 +2,31 @@
   <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 lg:flex lg:items-center lg:justify-between">
     <h2 class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
       <span class="block">Ready to dive in?</span>
-      <span class="block text-primary">Post your own offer now!</span>
+      <span class="block text-primary-700">Post your own offer now!</span>
     </h2>
     <div class="mt-8 flex lg:mt-0 lg:flex-shrink-0">
       <div class="inline-flex rounded-md shadow">
-        <a href="#" class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primary hover:bg-primary-dark">
-          Add an offer
-        </a>
+        <a mat-raised-button href="#" color="primary" class="inline-flex items-center justify-center px-5 py-3 text-base font-medium">Add an offer</a>
+<!--        <a href="#" class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primary-700 hover:bg-primary-dark">-->
+<!--          Add an offer-->
+<!--        </a>-->
       </div>
       <div class="ml-3 inline-flex rounded-md shadow">
-        <a href="#" class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-primary bg-white hover:bg-primary-lightest">
-          Learn more
-        </a>
+        <a mat-stroked-button href="#" color="accent" class="inline-flex items-center justify-center px-5 py-3 text-base font-medium bg-white">Learn more</a>
       </div>
     </div>
   </div>
 </div>
 <div class="flex items-center justify-center mx-auto my-8 text-3xl">
-  <mat-icon aria-hidden="false" aria-label="arrow to the south icon" color="primary" class="mx-4">south</mat-icon>
-  <h1 class="font-bold text-primary">Here is the latest offers</h1>
-  <mat-icon aria-hidden="false" aria-label="arrow to the south icon" color="primary" class="mx-4">south</mat-icon>
+  <mat-icon aria-hidden="false" aria-label="arrow to the south icon" color="accent" class="mx-4">south</mat-icon>
+  <h1 class="font-bold text-accent-700">Here is the latest offers</h1>
+  <mat-icon aria-hidden="false" aria-label="arrow to the south icon" color="accent" class="mx-4">south</mat-icon>
 </div>
-<div class="w-4/5 mx-auto rounded shadow-lg bg-yellow-500 p-6">
-  <div class="rounded shadow-lg grid grid-cols-8 gap-2 bg-gray-100">
-    <img src="./assets/villa-feature-image.jpeg" alt="" class="col-span-2 rounded-l">
+<div class="w-4/5 mx-auto rounded shadow-lg bg-primary-700 p-6">
+  <div class="rounded shadow-lg grid grid-cols-9 gap-2 bg-gray-100 my-6">
+    <img src="./assets/villa-feature-image.jpeg" alt="" class="col-span-3 rounded-l">
     <div class="col-span-3 m-3">
-      <h3 class="text-2xl font-semibold text-primary mb-4">My amazing house</h3>
+      <h3 class="text-2xl font-semibold text-accent-700 mb-4">My amazing house</h3>
       <h5 class="text-xl">Beautiful house with all the needs close to it. Very modern and spacious.</h5>
     </div>
     <div class="col-span-2 m-3 flex flex-wrap justify-around">
@@ -37,7 +36,43 @@
       <a mat-stroked-button href="#" color="accent" style="height: fit-content">98 m2 garden</a>
     </div>
     <div class="m-3 flex flex-col justify-between text-center">
-      <p class="text-lg font-bold text-yellow-500">1 099 ETH</p>
+      <p class="text-lg font-bold text-accent-700">1 099 ETH</p>
+      <p>260 m2</p>
+      <button mat-raised-button color="primary">Visit</button>
+    </div>
+  </div>
+  <div class="rounded shadow-lg grid grid-cols-9 gap-2 bg-gray-100 my-6">
+    <img src="./assets/villa-feature-image.jpeg" alt="" class="col-span-3 rounded-l">
+    <div class="col-span-3 m-3">
+      <h3 class="text-2xl font-semibold text-accent-700 mb-4">My amazing house</h3>
+      <h5 class="text-xl">Beautiful house with all the needs close to it. Very modern and spacious.</h5>
+    </div>
+    <div class="col-span-2 m-3 flex flex-wrap justify-around">
+      <a mat-stroked-button href="#" color="accent" style="height: fit-content">3 bedrooms</a>
+      <a mat-stroked-button href="#" color="accent" style="height: fit-content">2 bathrooms</a>
+      <a mat-stroked-button href="#" color="accent" style="height: fit-content">2 floors</a>
+      <a mat-stroked-button href="#" color="accent" style="height: fit-content">98 m2 garden</a>
+    </div>
+    <div class="m-3 flex flex-col justify-between text-center">
+      <p class="text-lg font-bold text-accent-700">1 099 ETH</p>
+      <p>260 m2</p>
+      <button mat-raised-button color="primary">Visit</button>
+    </div>
+  </div>
+  <div class="rounded shadow-lg grid grid-cols-9 gap-2 bg-gray-100 my-6">
+    <img src="./assets/villa-feature-image.jpeg" alt="" class="col-span-3 rounded-l">
+    <div class="col-span-3 m-3">
+      <h3 class="text-2xl font-semibold text-accent-700 mb-4">My amazing house</h3>
+      <h5 class="text-xl">Beautiful house with all the needs close to it. Very modern and spacious.</h5>
+    </div>
+    <div class="col-span-2 m-3 flex flex-wrap justify-around">
+      <a mat-stroked-button href="#" color="accent" style="height: fit-content">3 bedrooms</a>
+      <a mat-stroked-button href="#" color="accent" style="height: fit-content">2 bathrooms</a>
+      <a mat-stroked-button href="#" color="accent" style="height: fit-content">2 floors</a>
+      <a mat-stroked-button href="#" color="accent" style="height: fit-content">98 m2 garden</a>
+    </div>
+    <div class="m-3 flex flex-col justify-between text-center">
+      <p class="text-lg font-bold text-accent-700">1 099 ETH</p>
       <p>260 m2</p>
       <button mat-raised-button color="primary">Visit</button>
     </div>

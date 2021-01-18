@@ -19,8 +19,73 @@
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$frontend-primary: mat-palette($mat-teal, 700);
-$frontend-accent: mat-palette($mat-amber, 600, A100, A400);
+$tw-teal: (
+  50: #F0FDFA,
+  100: #CCFBF1,
+  200: #99F6E4,
+  300: #5EEAD4,
+  400: #2DD4BF,
+  500: #14B8A6,
+  600: #0D9488,
+  700: #0F766E,
+  800: #115E59,
+  900: #134E4A,
+  A100: #BBF9F4,
+  A200: #D1FBF8,
+  A400: #E8FDFB,
+  A700: #E8FDFB,
+  contrast: (
+    50: black,
+    100: black,
+    200: white,
+    300: white,
+    400: white,
+    500: white,
+    600: white,
+    700: white,
+    800: white,
+    900: white,
+    A100: black,
+    A200: black,
+    A400: black,
+    A700: black,
+  )
+);
+$tw-indigo: (
+  50: #EEF2FF,
+  100: #E0E7FF,
+  200: #C7D2FE,
+  300: #A5B4FC,
+  400: #818CF8,
+  500: #6366F1,
+  600: #4F46E5,
+  700: #4338CA,
+  800: #3730A3,
+  900: #312E81,
+  A100: #CDCBF8,
+  A200: #D9D8F9,
+  A400: #E6E5FB,
+  A700: #F2F2FD,
+  contrast: (
+    50: black,
+    100: black,
+    200: white,
+    300: white,
+    400: white,
+    500: white,
+    600: white,
+    700: white,
+    800: white,
+    900: white,
+    A100: black,
+    A200: black,
+    A400: black,
+    A700: black,
+  )
+);
+
+$frontend-primary: mat-palette($tw-teal, 700);
+$frontend-accent: mat-palette($tw-indigo, 700, A100, A400);
 
 // The warn palette is optional (defaults to red).
 $frontend-warn: mat-palette($mat-red);
