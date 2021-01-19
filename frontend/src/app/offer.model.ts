@@ -5,5 +5,5 @@ export class OfferModel {
   price: number;
   squareFootage: number;
   propertyType: string;
-  features: any;
+  features: string[];
 }

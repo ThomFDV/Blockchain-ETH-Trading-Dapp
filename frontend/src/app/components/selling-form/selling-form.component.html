@@ -1,10 +1,44 @@
 <div>
   <div class="flex justify-center">
-    <h1 class="text-2xl font-semibold text-center my-6 text-accent-700 border-2 border-accent-700 rounded py-4 px-8">
+    <h1 class="hero-title">
       Let's build your offer
     </h1>
   </div>
-  <div class="w-11/12 rounded bg-accent-100 m-auto">
-    <p>content goes here</p>
+  <div class="w-3/4 rounded bg-accent-100 m-auto p-4">
+    <form class="flex flex-col w-3/4 m-auto">
+      <mat-form-field appearance="outline" color="primary">
+        <mat-label class="text-accent-700">Name</mat-label>
+        <input matInput>
+      </mat-form-field>
+      <mat-form-field appearance="outline" color="primary">
+        <mat-label class="text-accent-700">Description</mat-label>
+        <textarea matInput></textarea>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label class="text-accent-700">Property Type</mat-label>
+        <mat-select>
+          <mat-option value="house">House</mat-option>
+          <mat-option value="apartment">Apartment</mat-option>
+          <mat-option value="loft">Loft</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div class="flex justify-around">
+        <mat-form-field appearance="outline" color="primary" class="w-1/4">
+          <mat-label class="text-accent-700">Price</mat-label>
+          <input matInput type="number">
+          <span matSuffix>ETH</span>
+        </mat-form-field>
+        <mat-form-field appearance="outline" color="primary" class="w-1/4">
+          <mat-label class="text-accent-700">Square Footage</mat-label>
+          <input matInput type="number">
+          <span matSuffix>m2</span>
+        </mat-form-field>
+      </div>
+      <mat-form-field appearance="outline" color="primary">
+        <mat-label class="text-accent-700">Feature (separate each one with a semicolon)</mat-label>
+        <textarea matInput></textarea>
+      </mat-form-field>
+      <button mat-raised-button color="primary" class="w-1/4 py-3 m-auto">Add my offer</button>
+    </form>
   </div>
 </div>
