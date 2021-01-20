@@ -14,12 +14,15 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {MatSelectModule} from "@angular/material/select";
 import {ReactiveFormsModule} from "@angular/forms";
+import { OfferDetailsComponent } from './components/offer-details/offer-details.component';
+import {DragScrollModule} from "ngx-drag-scroll";
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    SellingFormComponent
+    SellingFormComponent,
+    OfferDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +35,8 @@ import {ReactiveFormsModule} from "@angular/forms";
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    DragScrollModule
   ],
   providers: [],
   bootstrap: [AppComponent]

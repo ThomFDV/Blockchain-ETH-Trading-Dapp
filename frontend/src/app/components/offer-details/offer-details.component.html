@@ -1,0 +1,29 @@
+<div class="w-4/5 mx-auto my-6 py-4 bg-primary-700 bg-opacity-20 rounded mat-elevation-z4">
+  <div class="w-3/5 mx-auto my-4">
+    <drag-scroll #pictureShow scroll-x-wheel-enabled="true">
+      <img src="assets/villa-feature-image.jpeg" drag-scroll-item alt="">
+      <img src="assets/villa-feature-image.jpeg" drag-scroll-item alt="">
+      <img src="assets/villa-feature-image.jpeg" drag-scroll-item alt="">
+    </drag-scroll>
+    <div class="flex justify-around w-1/6 mx-auto my-3">
+      <button mat-mini-fab color="primary" aria-label="icon" (click)="moveLeft()">
+        <mat-icon>chevron_left</mat-icon>
+      </button>
+      <button mat-mini-fab color="primary" aria-label="icon" (click)="moveRight()">
+        <mat-icon>chevron_right</mat-icon>
+      </button>
+    </div>
+  </div>
+  <div class="w-3/4 rounded mat-elevation-z2 mx-auto my-4 p-4">
+    <h1 class="text-2xl text-accent-700 font-semibold my-3">{{ this.offer.name }}</h1>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus corporis culpa delectus deserunt distinctio
+      dolore dolores ea et fuga, iure laborum minima molestiae numquam perferendis reprehenderit rerum similique
+      suscipit vel?<br>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus corporis culpa delectus deserunt distinctio
+      dolore dolores ea et fuga, iure laborum minima molestiae numquam perferendis reprehenderit rerum similique
+      suscipit vel?
+    </p>
+    <h2 class="text-xl text-accent-700 font-semibold my-3">Features</h2>
+  </div>
+</div>

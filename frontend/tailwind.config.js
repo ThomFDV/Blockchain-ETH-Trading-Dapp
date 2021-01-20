@@ -20,6 +20,7 @@ module.exports = {
       accent: colors.indigo,
       black: colors.black,
       white: colors.white,
+      blueGray: colors.blueGray,
       gray: colors.coolGray,
       red: colors.red,
       yellow: colors.amber,
