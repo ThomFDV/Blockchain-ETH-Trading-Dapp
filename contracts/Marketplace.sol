@@ -1,10 +1,9 @@
 pragma solidity >=0.4.22 <0.9.0;
+pragma experimental ABIEncoderV2;
 
 contract Marketplace {
 
-    string name;
-
-    uint offerCount;
+    uint256 public offerCount;
 
     struct Property {
         uint id;
@@ -46,8 +45,7 @@ contract Marketplace {
         address payable ownerAddress
     );
 
-    constructor(string memory _name) public {
-        name = _name;
+    constructor() public {
         offerCount = 0;
     }
 
@@ -106,6 +104,113 @@ contract Marketplace {
             msg.sender
         );
         delete properties[_propertyId];
+        offerCount--;
     }
+
+    function getOfferCount() public view returns (uint256) {
+        return offerCount;
+    }
+
+    function getMyProperties() public returns (Property[] memory) {
+        Property[] memory myProps = new Property[](offerCount);
+
+        for(uint i = 0; i < offerCount; i++) {
+            if (properties[i].ownerAddress == msg.sender) {
+                myProps[i] = properties[i];
+            }
+        }
+
+        return myProps;
+    }
+
+    function getProperty(uint _id) public returns (Property memory) {
+        Property memory prop = properties[_id];
+        return prop;
+    }
+
+    function getProperties() public returns (Property[] memory) {
+        Property[] memory props = new Property[](offerCount);
+
+        for(uint i = 0; i < offerCount; i++) {
+            props[i] = properties[i];
+        }
+
+        return (props);
+    }
+
+//    function getProperty(uint _id) public returns (
+//        uint id,
+//        string memory offerTitle,
+//        string memory offerDescription,
+//        string memory addressLocation,
+//        string memory propertyType,
+//        string memory features,
+//        uint16 price,
+//        uint16 squareFootage,
+//        address ownerAddress
+//    ) {
+//        Property memory p = properties[_id];
+//        return (
+//            p.id,
+//            p.offerTitle,
+//            p.offerDescription,
+//            p.addressLocation,
+//            p.propertyType,
+//            p.features,
+//            p.price,
+//            p.squareFootage,
+//            p.ownerAddress
+//        );
+//    }
+
+//    function getProperties() public returns (
+//        uint[] idArray,
+//        string[] offerTitleArray,
+//        string[] offerDescriptionArray,
+//        string[] addressLocationArray,
+//        string[] propertyTypeArray,
+//        string[] featuresArray,
+//        uint16[] priceArray,
+//        uint16[] squareFootageArray,
+//        address[] ownerAddressArray
+//    ) {
+//        Property memory p = properties[_id];
+//        return (
+//        p.id,
+//        p.offerTitle,
+//        p.offerDescription,
+//        p.addressLocation,
+//        p.propertyType,
+//        p.features,
+//        p.price,
+//        p.squareFootage,
+//        p.ownerAddress
+//        );
+//    }
+
+//    function getPropertiesId() public view returns (uint[] memory) {
+//        uint[] memory ids = new uint[](offerCount);
+//
+//        for(uint i = 0; i < offerCount; i++) {
+//            ids[i] = properties[i].id;
+//        }
+//
+//        return (ids);
+//    }
+
+//    function getPropertiesTitle() public view returns (string[] memory) {
+//        string[] memory titles = new string[](offerCount);
+//
+//        for(uint i = 0; i < offerCount; i++) {
+//            titles[i] = properties[i].offerTitle;
+//        }
+//
+//        return (titles);
+//    }
+
+    /* TODO:
+     ? Ajouter une fonction pour lister sa propriété avec ownerAddress
+    */
+
 
 }
