@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {Router} from "@angular/router";
+import {MarketplaceService} from "../../services/marketplace.service";
+import {log} from "util";
 
 @Component({
   selector: 'app-selling-form',
@@ -11,21 +13,37 @@ export class SellingFormComponent implements OnInit {
 
   offerForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private router: Router) { }
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private marketplaceService: MarketplaceService
+  ) { }
 
   ngOnInit(): void {
     this.offerForm = this.fb.group({
       name: [''],
       description: [''],
+      propertyAddress: [''],
       propertyType: [''],
+      features: [''],
       price: [''],
-      squareFootage: [''],
-      features: ['']
+      squareFootage: ['']
     })
   }
 
   addOffer() {
     console.log(this.offerForm.value);
+    const prop = [
+      this.offerForm.value.name,
+      this.offerForm.value.description,
+      this.offerForm.value.propertyAddress,
+      this.offerForm.value.propertyType,
+      this.offerForm.value.features,
+      this.offerForm.value.price,
+      this.offerForm.value.squareFootage,
+    ]
+    this.marketplaceService.sellMyProperty(prop)
+      .then(res => console.info(res));
     this.offerForm.reset();
     alert('Offer added!');
     this.router.navigateByUrl('/');

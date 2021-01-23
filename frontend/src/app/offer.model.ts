@@ -1,9 +1,11 @@
-export class OfferModel {
+export class PropertyModel {
   id: number;
-  name: string;
-  description: string;
+  offerTitle: string;
+  offerDescription: string;
+  addressLocation: string;
+  propertyType: string;
+  features: string;
   price: number;
   squareFootage: number;
-  propertyType: string;
-  features: string[];
+  ownerAddress: string;
 }

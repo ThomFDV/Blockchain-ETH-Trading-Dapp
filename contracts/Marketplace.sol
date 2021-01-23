@@ -111,7 +111,7 @@ contract Marketplace {
         return offerCount;
     }
 
-    function getMyProperties() public returns (Property[] memory) {
+    function getMyProperties() public view returns (Property[] memory) {
         Property[] memory myProps = new Property[](offerCount);
 
         for(uint i = 0; i < offerCount; i++) {
@@ -123,12 +123,12 @@ contract Marketplace {
         return myProps;
     }
 
-    function getProperty(uint _id) public returns (Property memory) {
+    function getProperty(uint _id) public view returns (Property memory) {
         Property memory prop = properties[_id];
         return prop;
     }
 
-    function getProperties() public returns (Property[] memory) {
+    function getProperties() public view returns (Property[] memory) {
         Property[] memory props = new Property[](offerCount);
 
         for(uint i = 0; i < offerCount; i++) {
@@ -138,30 +138,13 @@ contract Marketplace {
         return (props);
     }
 
-//    function getProperty(uint _id) public returns (
-//        uint id,
-//        string memory offerTitle,
-//        string memory offerDescription,
-//        string memory addressLocation,
-//        string memory propertyType,
-//        string memory features,
-//        uint16 price,
-//        uint16 squareFootage,
-//        address ownerAddress
-//    ) {
-//        Property memory p = properties[_id];
-//        return (
-//            p.id,
-//            p.offerTitle,
-//            p.offerDescription,
-//            p.addressLocation,
-//            p.propertyType,
-//            p.features,
-//            p.price,
-//            p.squareFootage,
-//            p.ownerAddress
-//        );
-//    }
+    function getPropertyPriceAndSquareFootage(uint _id) public view returns (uint16, uint16) {
+        return (properties[_id].price, properties[_id].squareFootage);
+    }
+
+    function getPropertyOwner(uint _id) public view returns (address) {
+        return (properties[_id].ownerAddress);
+    }
 
 //    function getProperties() public returns (
 //        uint[] idArray,
@@ -198,19 +181,32 @@ contract Marketplace {
 //        return (ids);
 //    }
 
-//    function getPropertiesTitle() public view returns (string[] memory) {
+//    function getPropertiesTitleAndId() public view returns (string[] memory, uint[] memory) {
 //        string[] memory titles = new string[](offerCount);
+//        uint[] memory ids = new uint[](offerCount);
 //
-//        for(uint i = 0; i < offerCount; i++) {
+//        for(uint i = 1; i < offerCount; i++) {
 //            titles[i] = properties[i].offerTitle;
+//            ids[i] = properties[i].id;
 //        }
 //
-//        return (titles);
+//        return (titles, ids);
 //    }
 
-    /* TODO:
-     ? Ajouter une fonction pour lister sa propriété avec ownerAddress
-    */
-
+    function getPropertyInfos(uint _id) public view returns (
+        string memory,
+        string memory,
+        string memory,
+        string memory,
+        string memory
+    ) {
+        return (
+            properties[_id].offerTitle,
+            properties[_id].offerDescription,
+            properties[_id].addressLocation,
+            properties[_id].propertyType,
+            properties[_id].features
+        );
+    }
 
 }
