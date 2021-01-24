@@ -119,6 +119,21 @@ export class MarketplaceService {
       this.marketplaceContract.deployed()
         .then((instance) => instance.getProperties())
         .then((res) => {
+          return resolve([...res]);
+        }).catch((error) => {
+        console.error(error);
+        return reject('marketplace.service error');
+      });
+    });
+  }
+
+  async buyOneProperty(id: number, value: number) {
+    if (!this.account) this.account = await this.getAccount();
+    const amount = value * 1000000000000000000;
+    return new Promise((resolve, reject) => {
+      this.marketplaceContract.deployed()
+        .then((instance) => instance.buyProperty(id, { from: this.account, value: amount }))
+        .then((res) => {
           return resolve(res);
         }).catch((error) => {
         console.error(error);

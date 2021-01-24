@@ -5,6 +5,7 @@ export class PropertyModel {
   addressLocation: string;
   propertyType: string;
   features: string;
+  imagesUrl: string;
   price: number;
   squareFootage: number;
   ownerAddress: string;

@@ -1,5 +1,9 @@
-<div class="w-4/5 mx-auto my-6 py-4 bg-primary-700 bg-opacity-20 rounded mat-elevation-z4">
-  <div class="w-3/5 mx-auto my-4">
+<div class="w-4/5 mx-auto my-6 py-4">
+  <button mat-button color="primary" aria-label="icon" routerLink="/">
+    <mat-icon>west</mat-icon>
+    <span class="ml-2 text-lg">Go back to the property list</span>
+  </button>
+  <div class="w-4/5 mx-auto my-4 rounded">
     <drag-scroll #pictureShow scroll-x-wheel-enabled="true">
       <img src="assets/villa-feature-image.jpeg" drag-scroll-item alt="">
       <img src="assets/villa-feature-image.jpeg" drag-scroll-item alt="">
@@ -14,19 +18,29 @@
       </button>
     </div>
   </div>
-  <div class="w-3/4 rounded mat-elevation-z2 mx-auto my-4 p-4">
-    <h1 class="text-2xl text-accent-700 font-semibold my-3">{{ this.offer.offerTitle }}</h1>
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus corporis culpa delectus deserunt distinctio
-      dolore dolores ea et fuga, iure laborum minima molestiae numquam perferendis reprehenderit rerum similique
-      suscipit vel?<br>
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus corporis culpa delectus deserunt distinctio
-      dolore dolores ea et fuga, iure laborum minima molestiae numquam perferendis reprehenderit rerum similique
-      suscipit vel?
-    </p>
-    <h2 class="text-xl text-accent-700 font-semibold my-3">Features</h2>
-<!--    <ul>-->
-<!--      <li *ngFor="let feature of offer.features">{{ feature }}</li>-->
-<!--    </ul>-->
+  <div *ngIf="offer" class="flex grid grid-cols-3 gap-2 w-4/5 rounded mat-elevation-z2 mx-auto my-4 p-4">
+    <div class="col-span-2 p-2">
+      <h1 class="text-2xl text-accent-700 font-semibold my-3">{{ this.offer.offerTitle }}</h1>
+      <h3 class="text-lg text-accent-700 my-3">Offer from: {{ offer.ownerAddress }}</h3>
+      <div>
+        <mat-icon>chevron_right</mat-icon>
+        <span class="text-lg text-accent-700">{{ offer.addressLocation }}</span>
+      </div>
+      <p>{{ this.offer.offerDescription }}</p>
+      <h2 class="text-xl text-accent-700 font-semibold my-3">Features</h2>
+      <ul>
+        <li *ngFor="let feature of features">{{ feature }}</li>
+      </ul>
+    </div>
+    <div class="flex flex-col justify-around col-span-1 bg-primary-700 bg-opacity-10 rounded mat-elevation-z4 p-2">
+      <h3 class="text-xl text-accent-700 text-center">Square Footage: {{ offer.squareFootage }} m2</h3>
+      <h3 class="text-xl text-accent-700 text-center font-semibold">Price: {{ offer.price }} ETH</h3>
+      <div class="text-center">
+        <button mat-raised-button color="primary" (click)="buyProperty()" class="w-1/2 my-3">
+          Buy
+        </button>
+        <p class="text-lg">{{ offer.price }} ETH will be sent to the owner of this property.</p>
+      </div>
+    </div>
   </div>
 </div>

@@ -27,11 +27,12 @@ export class SellingFormComponent implements OnInit {
       propertyType: [''],
       features: [''],
       price: [''],
-      squareFootage: ['']
+      squareFootage: [''],
+      imagesUrl: ['']
     })
   }
 
-  addOffer() {
+  async addOffer() {
     console.log(this.offerForm.value);
     const prop = [
       this.offerForm.value.name,
@@ -39,11 +40,11 @@ export class SellingFormComponent implements OnInit {
       this.offerForm.value.propertyAddress,
       this.offerForm.value.propertyType,
       this.offerForm.value.features,
+      this.offerForm.value.imagesUrl,
       this.offerForm.value.price,
       this.offerForm.value.squareFootage,
     ]
-    this.marketplaceService.sellMyProperty(prop)
-      .then(res => console.info(res));
+    await this.marketplaceService.sellMyProperty(prop);
     this.offerForm.reset();
     alert('Offer added!');
     this.router.navigateByUrl('/');

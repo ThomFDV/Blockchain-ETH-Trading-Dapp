@@ -2,6 +2,7 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {DragScrollComponent} from "ngx-drag-scroll";
 import {PropertyModel} from "../../offer.model";
 import {MarketplaceService} from "../../services/marketplace.service";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-offer-details',
@@ -14,24 +15,15 @@ export class OfferDetailsComponent implements OnInit {
   picShown = 0;
   picNumber = 3;
 
-  offer: PropertyModel = {
-    id: 0,
-    offerTitle: 'My amazing house',
-    offerDescription: 'Beautiful house with all the needs close to it. Very modern and spacious.',
-    addressLocation: '42 rue Capucine, 75010 Paris',
-    propertyType: 'house',
-    features: '4 bedrooms;2 bathrooms;2 floors;98m2 garden;swimming pool',
-    price: 1099,
-    squareFootage: 292,
-    ownerAddress: '0x6a73036ea0327A38C4554cB8AC76FA99d445d902'
-  };
+  offer: PropertyModel;
+  features: string[];
 
-  constructor(private marketplaceService: MarketplaceService) { }
+  constructor(private marketplaceService: MarketplaceService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.autoMovePicture();
-    // this.getAccountAndBalance();
-    this.getProperty(1);
+    this.getProperty(this.route.snapshot.params.id);
+    this.getAccountAndBalance();
   }
 
   moveLeft() {
@@ -68,11 +60,21 @@ export class OfferDetailsComponent implements OnInit {
   getProperty(id: number) {
     this.marketplaceService.getOneProperty(id)
       .then((res: PropertyModel) => {
-        console.info(res);
+        this.offer = res;
+        this.features = res.features.split(';');
       })
       .catch(function(error) {
         console.error(error);
       });
+  }
+
+  buyProperty() {
+    this.marketplaceService.buyOneProperty(this.offer.id, this.offer.price).then(() => {
+      alert("Process succeed!");
+    }).catch((err) => {
+      alert("Something went wrong... Contact an admin.");
+      console.error(err);
+    });
   }
 
 }
