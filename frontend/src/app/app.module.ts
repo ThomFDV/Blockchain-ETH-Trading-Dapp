@@ -16,13 +16,15 @@ import {MatSelectModule} from "@angular/material/select";
 import {ReactiveFormsModule} from "@angular/forms";
 import { OfferDetailsComponent } from './components/offer-details/offer-details.component';
 import {DragScrollModule} from "ngx-drag-scroll";
+import { MyOffersComponent } from './components/my-offers/my-offers.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     SellingFormComponent,
-    OfferDetailsComponent
+    OfferDetailsComponent,
+    MyOffersComponent
   ],
   imports: [
     BrowserModule,

@@ -4,12 +4,10 @@
     <span class="ml-2 text-lg">Go back to the property list</span>
   </button>
   <div class="w-4/5 mx-auto my-4 rounded">
-    <drag-scroll #pictureShow scroll-x-wheel-enabled="true">
-      <img src="assets/villa-feature-image.jpeg" drag-scroll-item alt="">
-      <img src="assets/villa-feature-image.jpeg" drag-scroll-item alt="">
-      <img src="assets/villa-feature-image.jpeg" drag-scroll-item alt="">
+    <drag-scroll #pictureShow scroll-x-wheel-enabled="true" class="rounded mat-elevation-z2">
+      <img *ngFor="let picture of pictures" [src]="picture" drag-scroll-item [alt]="picture">
     </drag-scroll>
-    <div class="flex justify-around w-1/6 mx-auto my-3">
+    <div class="flex justify-around w-1/6 mx-auto my-2">
       <button mat-mini-fab color="primary" aria-label="icon" (click)="moveLeft()">
         <mat-icon>chevron_left</mat-icon>
       </button>
@@ -23,7 +21,7 @@
       <h1 class="text-2xl text-accent-700 font-semibold my-3">{{ this.offer.offerTitle }}</h1>
       <h3 class="text-lg text-accent-700 my-3">Offer from: {{ offer.ownerAddress }}</h3>
       <div>
-        <mat-icon>chevron_right</mat-icon>
+        <mat-icon color="accent">place</mat-icon>
         <span class="text-lg text-accent-700">{{ offer.addressLocation }}</span>
       </div>
       <p>{{ this.offer.offerDescription }}</p>
@@ -36,7 +34,7 @@
       <h3 class="text-xl text-accent-700 text-center">Square Footage: {{ offer.squareFootage }} m2</h3>
       <h3 class="text-xl text-accent-700 text-center font-semibold">Price: {{ offer.price }} ETH</h3>
       <div class="text-center">
-        <button mat-raised-button color="primary" (click)="buyProperty()" class="w-1/2 my-3">
+        <button mat-raised-button color="primary" (click)="buyProperty()" [disabled]="this.userAccount === offer.ownerAddress" class="w-1/2 my-3">
           Buy
         </button>
         <p class="text-lg">{{ offer.price }} ETH will be sent to the owner of this property.</p>

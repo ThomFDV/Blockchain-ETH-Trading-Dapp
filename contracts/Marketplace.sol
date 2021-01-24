@@ -12,9 +12,10 @@ contract Marketplace {
         string addressLocation;
         string propertyType;
         string features;
+        string imagesUrl;
 
-        uint16 price;
-        uint16 squareFootage;
+        uint256 price;
+        uint256 squareFootage;
 
         address payable ownerAddress;
     }
@@ -28,8 +29,9 @@ contract Marketplace {
         string addressLocation,
         string propertyType,
         string features,
-        uint16 price,
-        uint16 squareFootage,
+        string imagesUrl,
+        uint256 price,
+        uint256 squareFootage,
         address payable ownerAddress
     );
 
@@ -40,8 +42,9 @@ contract Marketplace {
         string addressLocation,
         string propertyType,
         string features,
-        uint16 price,
-        uint16 squareFootage,
+        string imagesUrl,
+        uint256 price,
+        uint256 squareFootage,
         address payable ownerAddress
     );
 
@@ -55,11 +58,13 @@ contract Marketplace {
         string memory addressLocation,
         string memory _propertyType,
         string memory _features,
-        uint16 _price,
-        uint16 _squareFootage
+        string memory _imagesUrl,
+        uint256 _price,
+        uint256 _squareFootage
     ) public {
         require(_price > 0);
         require(_squareFootage > 0);
+        require(bytes(_imagesUrl).length > 0);
 
         offerCount++;
 
@@ -70,6 +75,7 @@ contract Marketplace {
             addressLocation,
             _propertyType,
             _features,
+            _imagesUrl,
             _price,
             _squareFootage,
             msg.sender
@@ -81,6 +87,7 @@ contract Marketplace {
             addressLocation,
             _propertyType,
             _features,
+            _imagesUrl,
             _price,
             _squareFootage,
             msg.sender
@@ -99,6 +106,7 @@ contract Marketplace {
             _property.addressLocation,
             _property.propertyType,
             _property.features,
+            _property.imagesUrl,
             _property.price,
             _property.squareFootage,
             msg.sender
@@ -112,15 +120,15 @@ contract Marketplace {
     }
 
     function getMyProperties() public view returns (Property[] memory) {
-        Property[] memory myProps = new Property[](offerCount);
+        Property[] memory myProps = new Property[](offerCount + 1);
 
-        for(uint i = 0; i < offerCount; i++) {
+        for(uint i = 1; i < offerCount + 1; i++) {
             if (properties[i].ownerAddress == msg.sender) {
                 myProps[i] = properties[i];
             }
         }
 
-        return myProps;
+        return (myProps);
     }
 
     function getProperty(uint _id) public view returns (Property memory) {
@@ -129,84 +137,13 @@ contract Marketplace {
     }
 
     function getProperties() public view returns (Property[] memory) {
-        Property[] memory props = new Property[](offerCount);
+        Property[] memory props = new Property[](offerCount + 1);
 
-        for(uint i = 0; i < offerCount; i++) {
+        for(uint i = 1; i < offerCount + 1; i++) {
             props[i] = properties[i];
         }
 
         return (props);
-    }
-
-    function getPropertyPriceAndSquareFootage(uint _id) public view returns (uint16, uint16) {
-        return (properties[_id].price, properties[_id].squareFootage);
-    }
-
-    function getPropertyOwner(uint _id) public view returns (address) {
-        return (properties[_id].ownerAddress);
-    }
-
-//    function getProperties() public returns (
-//        uint[] idArray,
-//        string[] offerTitleArray,
-//        string[] offerDescriptionArray,
-//        string[] addressLocationArray,
-//        string[] propertyTypeArray,
-//        string[] featuresArray,
-//        uint16[] priceArray,
-//        uint16[] squareFootageArray,
-//        address[] ownerAddressArray
-//    ) {
-//        Property memory p = properties[_id];
-//        return (
-//        p.id,
-//        p.offerTitle,
-//        p.offerDescription,
-//        p.addressLocation,
-//        p.propertyType,
-//        p.features,
-//        p.price,
-//        p.squareFootage,
-//        p.ownerAddress
-//        );
-//    }
-
-//    function getPropertiesId() public view returns (uint[] memory) {
-//        uint[] memory ids = new uint[](offerCount);
-//
-//        for(uint i = 0; i < offerCount; i++) {
-//            ids[i] = properties[i].id;
-//        }
-//
-//        return (ids);
-//    }
-
-//    function getPropertiesTitleAndId() public view returns (string[] memory, uint[] memory) {
-//        string[] memory titles = new string[](offerCount);
-//        uint[] memory ids = new uint[](offerCount);
-//
-//        for(uint i = 1; i < offerCount; i++) {
-//            titles[i] = properties[i].offerTitle;
-//            ids[i] = properties[i].id;
-//        }
-//
-//        return (titles, ids);
-//    }
-
-    function getPropertyInfos(uint _id) public view returns (
-        string memory,
-        string memory,
-        string memory,
-        string memory,
-        string memory
-    ) {
-        return (
-            properties[_id].offerTitle,
-            properties[_id].offerDescription,
-            properties[_id].addressLocation,
-            properties[_id].propertyType,
-            properties[_id].features
-        );
     }
 
 }

@@ -9,9 +9,9 @@ const tokenAbi = require('../../../../build/contracts/Marketplace.json');
   providedIn: 'root'
 })
 export class MarketplaceService {
-  web3: any;
-  enable: any;
-  private account: any;
+  private readonly web3: any;
+  private enable: any;
+  account: any;
   private marketplaceContract: any;
 
   constructor() {
@@ -106,6 +106,20 @@ export class MarketplaceService {
         .then((instance) => instance.getProperty(id, { from: this.account }))
         .then((res) => {
           return resolve(res);
+        }).catch((error) => {
+        console.error(error);
+        return reject('marketplace.service error');
+      });
+    });
+  }
+
+  async getAllMyProperties() {
+    if (!this.account) this.account = await this.getAccount();
+    return new Promise((resolve, reject) => {
+      this.marketplaceContract.deployed()
+        .then((instance) => instance.getMyProperties({ from: this.account }))
+        .then((res) => {
+          return resolve([...res]);
         }).catch((error) => {
         console.error(error);
         return reject('marketplace.service error');

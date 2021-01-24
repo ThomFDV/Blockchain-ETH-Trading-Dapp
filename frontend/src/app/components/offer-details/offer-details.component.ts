@@ -17,6 +17,8 @@ export class OfferDetailsComponent implements OnInit {
 
   offer: PropertyModel;
   features: string[];
+  pictures: string[];
+  userAccount: any;
 
   constructor(private marketplaceService: MarketplaceService, private route: ActivatedRoute) { }
 
@@ -62,6 +64,9 @@ export class OfferDetailsComponent implements OnInit {
       .then((res: PropertyModel) => {
         this.offer = res;
         this.features = res.features.split(';');
+        this.pictures = res.imagesUrl.split(';');
+        this.userAccount = this.marketplaceService.account;
+
       })
       .catch(function(error) {
         console.error(error);

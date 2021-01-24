@@ -1,25 +1,9 @@
-<div class="bg-gray-200">
-  <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 lg:flex lg:items-center lg:justify-between">
-    <h2 class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-      <span class="block">Ready to dive in?</span>
-      <span class="block text-primary-700">Post your own offer now!</span>
-    </h2>
-    <div class="mt-8 flex lg:mt-0 lg:flex-shrink-0">
-      <div class="inline-flex rounded-md shadow">
-        <a mat-raised-button routerLink="/sell" color="primary" class="inline-flex items-center justify-center px-5 py-3 text-base font-medium">Add an offer</a>
-      </div>
-      <div class="ml-3 inline-flex rounded-md shadow">
-        <a mat-stroked-button routerLink="/my-offers" color="accent" class="inline-flex items-center justify-center px-5 py-3 text-base font-medium bg-white">Show mine</a>
-      </div>
-    </div>
-  </div>
-</div>
 <div class="flex items-center justify-center mx-auto my-8 text-3xl">
   <mat-icon aria-hidden="false" aria-label="arrow to the south icon" color="accent" class="mx-4">south</mat-icon>
   <h1 class="font-bold text-accent-700">Here is the latest offers</h1>
   <mat-icon aria-hidden="false" aria-label="arrow to the south icon" color="accent" class="mx-4">south</mat-icon>
 </div>
-<div *ngIf="offers" class="w-11/12 mx-auto rounded shadow-lg bg-primary-700 p-6 mb-6">
+<div *ngIf="offers" class="w-4/5 mx-auto rounded shadow-lg bg-primary-700 p-6 mb-6">
   <div *ngFor="let offer of offers" class="rounded shadow-lg grid grid-cols-9 gap-2 bg-gray-100 my-6">
     <img [src]="getPicture(offer)" alt="" class="col-span-3 rounded-l">
     <div class="col-span-3 m-3 flex flex-col justify-between">
